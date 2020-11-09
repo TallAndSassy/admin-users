@@ -17,10 +17,10 @@ class UsersTable extends LivewireDatatable
     {
         $me = $this;
         return [
-            Column::name('name')
-                ->label('Person')
-                ->searchable()
-            ,
+            //            Column::name('name')
+            //                ->label('Person')
+            //                ->searchable()
+            //            ,
             Column::Callback(['name','email', 'id'],
                 function(string $value, string $email, int $id) use ($me): string {
                     #return "<div>$value</div>";
@@ -42,14 +42,17 @@ class UsersTable extends LivewireDatatable
                 'email',
                 function (string $value) use ($me): string {
                     $maybeHighlightedValue = $me->highlightStringWithCurrentSearchTerm($value);
-                    return "<a href='mailto:$value'>$maybeHighlightedValue</a>";
+                    #return "<a href='mailto:$value'>$maybeHighlightedValue</a>";
+                    return view('tassy::components.ui.link_mailto',['slotWithHighlighting'=>$value,'slot'=>$maybeHighlightedValue]);
                 })
+                ->label('Email')
                 ->searchable()
             ,
 
             DateColumn::raw('created_at')
                 ->label('Created On')
                 ->format('jS F, Y')
+                ->hide()
                 ->searchable(),
 
         ];

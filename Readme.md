@@ -20,6 +20,10 @@ Before installing a new package it's always a good idea to clear your config cac
 php artisan config:clear
 ```
 
+Uses: https://github.com/TallAndSassy/livewire-datatables
+and/or 
+https://github.com/ElegantTechologies/laravel-livewire-tables
+
 ## Credits
 
 - [:jjrohrer](https://github.com/:jjrohrer)
