@@ -49,6 +49,12 @@ class UsersTable extends LivewireDatatable
                 ->label('Email')
                 ->searchable()
             ,
+            Column::Callback(__('id'),
+                function(int $id) {
+                    $objUser = \App\Models\User::find($id);
+                    return view('tassy::users-page-table-cell-teams',['objUser'=>$objUser]);
+                })
+                ->label(__('Teams')),
 
             DateColumn::raw('created_at')
                 ->label('Created On')

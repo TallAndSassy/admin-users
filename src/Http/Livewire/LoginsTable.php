@@ -64,12 +64,9 @@ class LoginsTable extends   \StWip\Themed\ThemedTable
                     return view('tassy::components.ui.link_mailto',['slotWithHighlighting'=>$email,'slot'=>$email]);
                 }),
              Column::make(__('Teams'), 'teams')
-                #->searchable()
-                #->sortable()
                 ->html()
                 ->render(function($row) {
                     $objUser = User::find($row['id']);
-                    #$teams = $theUser->allTeams();
                     return view('tassy::users-page-table-cell-teams',['objUser'=>$objUser]);
                 }),
 
