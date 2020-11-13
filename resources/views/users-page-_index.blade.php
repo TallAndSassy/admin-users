@@ -2,5 +2,5 @@
 
     <livewire:tassy::logins-table />
 
-    <livewire:tassy::users-table exportable hideable="select"/>
+{{--    <livewire:tassy::users-table exportable hideable="select"/>--}}
 </div>

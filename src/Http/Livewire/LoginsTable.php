@@ -13,10 +13,6 @@ class LoginsTable extends   \StWip\Themed\ThemedTable
     public function query() : Builder
     {
         $qb = User::where('id','>',0); //  Illuminate\Database\Eloquent\Builder
-        #$d = $qb->get();
-        #dd($d);
-        #$qb = \DB::table('users'); // Illuminate\Database\Query\Builder
-        #$d = $qb->get();
         return $qb;
 
 
@@ -56,7 +52,7 @@ class LoginsTable extends   \StWip\Themed\ThemedTable
                     $id = $row['id'];
 
 
-                    return view('tassy::users-page-table-cell', ['value'=>$value, 'maybeHighlightedValue'=>$maybeHighlightedValue,  'id'=>$id, 'asrRow'=>$asrRow])->render();
+                    return view('tassy::users-page-table-cell-name', ['value'=>$value, 'maybeHighlightedValue'=>$maybeHighlightedValue,  'id'=>$id, 'asrRow'=>$asrRow])->render();
                     #return "<b>{$row['name']}</b>";
                 }),
             Column::make('E-mail', 'email')
@@ -67,14 +63,15 @@ class LoginsTable extends   \StWip\Themed\ThemedTable
                     $email = $row['email'];
                     return view('tassy::components.ui.link_mailto',['slotWithHighlighting'=>$email,'slot'=>$email]);
                 }),
-//             Column::make('Avatar', 'profile_photo_url')
-//                #->searchable()
-//                #->sortable()
-//                ->html()
-//                ->render(function($row) {
-//                    $profile_photo_url = $row['profile_photo_url'];
-//                    return $profile_photo_url;
-//                }),
+             Column::make(__('Teams'), 'teams')
+                #->searchable()
+                #->sortable()
+                ->html()
+                ->render(function($row) {
+                    $objUser = User::find($row['id']);
+                    #$teams = $theUser->allTeams();
+                    return view('tassy::users-page-table-cell-teams',['objUser'=>$objUser]);
+                }),
 
         ];
     }
