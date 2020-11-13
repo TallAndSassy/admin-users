@@ -14,16 +14,33 @@ This adds a 'admin/Users' page
 Please send love
 
 ## Installation
-Before installing a new package it's always a good idea to clear your config cache:
-
+## Installation
+Since this is a module, and not a package, you'll need to manually install a couple of things:
 ```bash
 php artisan config:clear
+cd app_root/modules;
+git clone githuburl  
 ```
 
-Uses: https://github.com/TallAndSassy/livewire-datatables
-and/or 
-https://github.com/ElegantTechologies/laravel-livewire-tables
+Edit config\app.php
+```php
+\TallModSassy\AdminUsers\AdminUsersServiceProvider::class, # add in the array  
+```
 
+Edit composer.json
+```json
+"autoload": {
+    "psr-4": {
+        ...
+        "TallModSassy\\AdminUsers\\": "modules\\admin-users\\src"
+        ...
+    }
+},  
+```
+
+```bash
+composer dump-autoload 
+```
 ## Credits
 
 - [:jjrohrer](https://github.com/:jjrohrer)

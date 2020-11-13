@@ -79,7 +79,7 @@ class AdminUsersServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/app-theme-base-admin-users.php', 'app-theme-base-admin-users');
+        $this->mergeConfigFrom(__DIR__ . '/../config/admin-users.php', 'admin-users');
     }
 
     public static function migrationFileExists(string $migrationFileName): bool
