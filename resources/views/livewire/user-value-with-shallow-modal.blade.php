@@ -1,7 +1,11 @@
 <div>
     {{--{!! $value !!}--}}
-    <div wire:click="showModal()" wire:loading.attr="disabled">
-        <x-tassy::ui.looks.link-to-modal href="tbd">{!! $maybeHighlightedValue !!}</x-tassy::ui.looks.link-to-modal>
+    <div wire:click="showModal()" wire:loading.attr="disabled" class="flex">
+{{--        {{dd($asrRow)}}--}}
+        <img class="w-8 rounded rounded-full mr-2" src="{{$asrRow['profile_photo_url']}}"/>
+        <x-tassy::ui.looks.link-to-modal href="tbd">
+            {!! $maybeHighlightedValue !!}
+        </x-tassy::ui.looks.link-to-modal>
     </div>
 
 
@@ -9,7 +13,7 @@
     <x-tassy::dialog-modal wire:model="showingModal">
 
 
-        <x-slot name="title">User: {{$user->name}}</x-slot>
+        <x-slot name="title">User: {{$knownGoodName}}</x-slot>
         <x-slot name="content">
             <livewire:flash-container key="{{uniqid()}}"/>
 

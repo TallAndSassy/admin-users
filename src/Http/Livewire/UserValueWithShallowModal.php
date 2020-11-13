@@ -18,6 +18,8 @@ class UserValueWithShallowModal extends Component
     public string $isInState = 'reading';
     public bool $showingModal = false;
     public bool $canUpdate = true;
+    public string $knownGoodName;
+    public array $asrRow;
 
 
     public function mount(string $value, int $id, string $maybeHighlightedValue = 'dub', $asrRow)
@@ -27,7 +29,9 @@ class UserValueWithShallowModal extends Component
         $this->maybeHighlightedValue = $maybeHighlightedValue;
         #$this->asrRow = $asrRow;
         $this->user = \App\Models\User::find($this->db_id);
+        $this->knownGoodName = $this->user->name;
         assert($this->user,__FILE__.__LINE__);
+        $this->asrRow = $asrRow;
     }
 
 
@@ -69,6 +73,7 @@ class UserValueWithShallowModal extends Component
             flash('Ouch: Nothing was saved for '.$flight->getOriginal('name') )->error()->livewire($this);
         } else {
             $this->isInState = 'reading';
+            $this->knownGoodName = $flight->name;
             flash('Successfully Updated '.$this->user->name)->success()->livewire($this);
         }
     }

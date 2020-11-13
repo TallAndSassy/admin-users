@@ -12,7 +12,15 @@ class LoginsTable extends   \StWip\Themed\ThemedTable
 {
     public function query() : Builder
     {
-        return User::where('id','>',0); // This shall return part of a query-builder
+        $qb = User::where('id','>',0); //  Illuminate\Database\Eloquent\Builder
+        #$d = $qb->get();
+        #dd($d);
+        #$qb = \DB::table('users'); // Illuminate\Database\Query\Builder
+        #$d = $qb->get();
+        return $qb;
+
+
+        //return User::where('id','>',0); // This shall return part of a query-builder
         //https://medium.com/@Eddy_mens/knowing-when-its-a-model-or-a-builder-laravel-822f393e578e
     }
 
@@ -47,6 +55,7 @@ class LoginsTable extends   \StWip\Themed\ThemedTable
                     $maybeHighlightedValue = $value = $asrRow['name'];
                     $id = $row['id'];
 
+
                     return view('tassy::users-page-table-cell', ['value'=>$value, 'maybeHighlightedValue'=>$maybeHighlightedValue,  'id'=>$id, 'asrRow'=>$asrRow])->render();
                     #return "<b>{$row['name']}</b>";
                 }),
@@ -58,6 +67,15 @@ class LoginsTable extends   \StWip\Themed\ThemedTable
                     $email = $row['email'];
                     return view('tassy::components.ui.link_mailto',['slotWithHighlighting'=>$email,'slot'=>$email]);
                 }),
+//             Column::make('Avatar', 'profile_photo_url')
+//                #->searchable()
+//                #->sortable()
+//                ->html()
+//                ->render(function($row) {
+//                    $profile_photo_url = $row['profile_photo_url'];
+//                    return $profile_photo_url;
+//                }),
+
         ];
     }
 
