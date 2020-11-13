@@ -32,7 +32,8 @@ class UsersTable extends LivewireDatatable
                     $asrRow['name'] = $value;
                     $asrRow['email'] = $email;
                     #$asrRow['email_verified_at'] =$email_verified_at;
-                    #$asrRow['profile_photo_url'] =$profile_photo_url;
+                    #Column not found: 1054 Unknown column 'users.profile_photo_url' $asrRow['profile_photo_url'] = $profile_photo_url;
+                    $asrRow['profile_photo_url'] = null;
                     return view('tassy::users-page-table-cell', ['value'=>$value, 'maybeHighlightedValue'=>$maybeHighlightedValue,  'id'=>$id, 'asrRow'=>$asrRow])->render();
                 })
                 ->label('Modal Person')

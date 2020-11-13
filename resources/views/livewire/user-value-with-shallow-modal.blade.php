@@ -1,8 +1,10 @@
 <div>
     {{--{!! $value !!}--}}
     <div wire:click="showModal()" wire:loading.attr="disabled" class="flex">
-{{--        {{dd($asrRow)}}--}}
+
+        @if($asrRow['profile_photo_url'])
         <img class="w-8 rounded rounded-full mr-2" src="{{$asrRow['profile_photo_url']}}"/>
+        @endif
         <x-tassy::ui.looks.link-to-modal href="tbd">
             {!! $maybeHighlightedValue !!}
         </x-tassy::ui.looks.link-to-modal>
