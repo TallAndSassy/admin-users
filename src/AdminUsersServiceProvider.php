@@ -2,11 +2,10 @@
 
 namespace TallModSassy\AdminUsers;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-require_once(__DIR__."/../routes/web.php"); // MaybeToDo
+#require_once(__DIR__."/../routes/web.php");  NOPE: See the readme
 
 class AdminUsersServiceProvider extends ServiceProvider
 {
@@ -23,6 +22,8 @@ class AdminUsersServiceProvider extends ServiceProvider
             function (string $prefix) {
                 Route::prefix($prefix)->group(
                     function () {
+
+                        #include(base_path('modules/admin-users/routes/web.php'));
                         // Prefix Route Samples -BEGIN-
                         // Sample routes that only show while developing...
                         //                        if (App::environment(['local', 'testing'])) {
@@ -62,7 +63,10 @@ class AdminUsersServiceProvider extends ServiceProvider
         // TODO: Register your livewire components that live in this package here:
         \Livewire\Livewire::component('tassy::users-table',  \TallModSassy\AdminUsers\Http\Livewire\UsersTable::class);
         \Livewire\Livewire::component('tassy::logins-table',  \TallModSassy\AdminUsers\Http\Livewire\LoginsTable::class);
+
         \Livewire\Livewire::component('tassy::user-value-with-shallow-modal',  \TallModSassy\AdminUsers\Http\Livewire\UserValueWithShallowModal::class);
+
+        \Livewire\Livewire::component('tassy::cards.num-users',  \TallModSassy\AdminUsers\Http\Livewire\Cards\NumUsers::class);
         // TODO: Add your own other boot related stuff here...
 
 

@@ -38,6 +38,11 @@ Edit composer.json
 },  
 ```
 
+Add this to the end of /routes/web.php (or learn the routing better)
+```php
+require_once(base_path('modules/admin-users/routes/web.php'));
+```
+
 ```bash
 composer dump-autoload 
 ```
