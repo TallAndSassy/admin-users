@@ -24,13 +24,19 @@
         $altEmphasis_css = $objTeam->personal_team ?  $isAltPrimary_css : $isAltSecondary_css;
 
         @endphp
-        <span class="{{$toggle_reported}} {{$toggle_reported_css_picked}} {{$emphasis_css}} {{$altEmphasis_css}}">{{$objTeam->name}}</span>
+        <span class="{{$toggle_reported}} {{$toggle_reported_css_picked}} {{$emphasis_css}} {{$altEmphasis_css}}">
+            <a {!! \TallAndSassy\PageGuide\Components\Lepage::wireSwaplinkInA("/admin/DevDemo/sample/500_TeamsTabWip/team/{$objTeam->id}") !!}> {{$objTeam->name}}</a>
+            {{--            <a href="/admin/DevDemo/sample/500_TeamsTabWip/team/{{$objTeam->id}}">{{$objTeam->name}}</a>--}}
+        </span>
     @endforeach
      @foreach ($objUser->teams as $objTeam)
         @php
         $emphasis_css = $isSecondary_css;
         $altEmphasis_css = $isAltSecondary_css;
         @endphp
-        <span class="{{$toggle_reported}} {{$toggle_reported_css_picked}} {{$emphasis_css}} {{$altEmphasis_css}}">{{$objTeam->name}}</span>
+        <span class="{{$toggle_reported}} {{$toggle_reported_css_picked}} {{$emphasis_css}} {{$altEmphasis_css}}">
+            <a {!! \TallAndSassy\PageGuide\Components\Lepage::wireSwaplinkInA("/admin/DevDemo/sample/500_TeamsTabWip/team/{$objTeam->id}") !!}> {{$objTeam->name}}</a>
+            {{--            <a href="/admin/DevDemo/sample/500_TeamsTabWip/team/{{$objTeam->id}}">{{$objTeam->name}}</a>--}}
+        </span>
     @endforeach
 </div>

@@ -8,16 +8,12 @@ use ElegantTechnologies\LaravelLivewireTables\Views\Column;
 
 
 
-class LoginsTable extends   \StWip\Themed\ThemedTable
+class LoginsTable extends   \TallAndSassy\AppThemBaseTables\ThemedTable
 {
     public function query() : Builder
     {
         $qb = User::where('id','>',0); //  Illuminate\Database\Eloquent\Builder
         return $qb;
-
-
-        //return User::where('id','>',0); // This shall return part of a query-builder
-        //https://medium.com/@Eddy_mens/knowing-when-its-a-model-or-a-builder-laravel-822f393e578e
     }
 
     public static function getAsrReadables($row) : array {

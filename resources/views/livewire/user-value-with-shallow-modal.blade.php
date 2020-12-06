@@ -12,7 +12,7 @@
 
 
     <!-- Modal -->
-    <x-tassy::dialog-modal wire:model="showingModal">
+    <x-tassy::dialog-modal-inline wire:model="showingModal">
 
 
         <x-slot name="title">User: {{$knownGoodName}}</x-slot>
@@ -89,5 +89,5 @@
             {{--            </x-jet-button>--}}
         </x-slot>
 
-    </x-tassy::dialog-modal>
+    </x-tassy::dialog-modal-inline>
 </div>
